@@ -21,7 +21,9 @@ app.permanent_session_lifetime = timedelta(minutes = 5)
 
 
 
+@app.route('/home/')
 @app.route('/')
+
 def home():
     return render_template('Home.html')
 
