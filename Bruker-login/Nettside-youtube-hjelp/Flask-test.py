@@ -29,7 +29,7 @@ def home():
 
 #Her kommer login:
 
-@app.route('/login', methods = ['POST', 'GET'])
+@app.route('/login/', methods = ['POST', 'GET'])
 def login():
     if request.method == 'POST':
         session.permanent = True
@@ -46,7 +46,7 @@ def login():
 
 
 
-@app.route('/user')
+@app.route('/user/')
 def user():
     if "user" in session:
         user = session['user']
@@ -55,7 +55,7 @@ def user():
         flash('You are not logged in')
         return redirect(url_for('login'))
     
-@app.route('/logout')
+@app.route('/logout/')
 def logout():
     
     flash(f'You have been logged out', 'info')
