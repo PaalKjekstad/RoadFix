@@ -7,8 +7,11 @@ Created on Wed May  5 18:04:31 2021
 
 from flask import (Flask, redirect, url_for, render_template,request, session, flash)
 
+
 #For å la en session vare så lenge man vil
 from datetime import timedelta
+
+import sqlalchemy
 
 app = Flask(__name__ , template_folder="template")
 
@@ -19,11 +22,17 @@ app.permanent_session_lifetime = timedelta(minutes = 5)
 
 
 
+#Lagre informasjon fra brukeren
+
+@app.route('/workspace/', methods=['GET', 'POST'])
+def workspace():
+    if request.method == 'POST':
+        return 'You have rated the picture:' + request.form['Rating']
+    return render_template('workspace.html')
 
 
-@app.route('/home/')
+
 @app.route('/')
-
 def home():
     return render_template('Home.html')
 
@@ -48,7 +57,7 @@ def login():
 
 
 
-@app.route('/user/')
+@app.route('/user')
 def user():
     if "user" in session:
         user = session['user']
@@ -60,14 +69,12 @@ def user():
 @app.route('/logout/')
 def logout():
     
-    flash(f'You have been logged out', 'info')
+    flash('You have been logged out')
     
     session.pop('user', None)
     
     return redirect(url_for('login'))
    
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
