@@ -42,17 +42,17 @@ sqlCommands = (
         )        
 conn = connect("dbname=Paal_SE4GI user=postgres password=19Pjok96")
 cur = conn.cursor()
-for command in cleanup :
-    cur.execute(command)
-for command in commands :
-    cur.execute(command)
-    print('execute command')
-cur.execute(sqlCommands[0], ('Giuseppe', '3ety3e7'))
-userId = cur.fetchone()[0]
-cur.execute(sqlCommands[1], ('My First Post', 'This is the post body', userId))
-cur.execute('SELECT * FROM post')
-print(cur.fetchall())
+#for command in cleanup :
+#    cur.execute(command)
+#for command in commands :
+#    cur.execute(command)
+#     print('execute command')
+#cur.execute(sqlCommands[0], ('Giuseppe', '3ety3e7'))
+#userId = cur.fetchone()[0]
+#cur.execute(sqlCommands[1], ('My First Post', 'This is the post body', userId))
+#cur.execute('SELECT * FROM post')
+#print(cur.fetchall())
 
-cur.close()
-conn.commit()
-conn.close()
+#cur.close()
+#conn.commit()
+#conn.close()
