@@ -1,0 +1,1 @@
+dbname=Paal_SE4GI user=postgres password=19Pjok96
