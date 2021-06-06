@@ -231,7 +231,12 @@ def delete(id):
     cur = conn.cursor()
     cur.execute('DELETE FROM post WHERE post_id = %s', (id,))
     conn.commit()
-    return redirect(url_for('home'))                               
+    return redirect(url_for('home'))  
+
+@app.route('/map_screen/')
+def map_screen():
+    return render_template('map.html')
+
 
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
